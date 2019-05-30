@@ -38,13 +38,15 @@ public class MinHeap{
         items[indexOne] = items[indexTwo];
         items[indexTwo] = temp;
     }
+    
+    //while adding if the capacity of 10 gets filled, the array size should be doubled
     private void ensureExtraCapacity(){
         if(size==capacity){
             items = Arrays.copyOf(items,capacity*2);
             capacity *= 2;
         }
     }
-    
+    //to return the smallest element
     public int peek(){
         if(size==0){
             throw new IllegalStateException();
@@ -52,6 +54,7 @@ public class MinHeap{
         return items[0];
     }
     
+     //to remove the smallest element
     public int poll(){
         if(size==0){
             throw new IllegalStateException();
@@ -63,6 +66,7 @@ public class MinHeap{
         return item;
     }
     
+    
     public void add(int item){
         ensureExtraCapacity();
         items[size] = item;
@@ -70,6 +74,10 @@ public class MinHeap{
         heapifyUp();
     }
     
+    
+    // compares the element with it's parent. if it's value is smaller, swap the element
+    // and it's parent. and again compare their values until the element has a parent and it's value is 
+    //smaller
     public void heapifyUp(){
         int index = size-1;
         while(hasParent(index) && parent(index) > items[index]){
@@ -78,6 +86,10 @@ public class MinHeap{
         }
     }
     
+    
+    //compares the element with value of it's smallest child value. if element's value is greater,
+    // swap both of them and go on doing this until the element has children and elements value is 
+    // greater than it's children value
     public void heapifyDown(){
         int index = 0; 
         while(hasLeftChild(index)){
