@@ -1,3 +1,11 @@
+//in order to specifically find kth smallest, this logic works. I have to check why it is failing if you make a for loop for printing kth 
+//smallest from k = 1 to 16 or if I try to print three or more smallest numbers sometimes.
+
+
+
+
+
+
 import java.util.Arrays;
 class HeapNode{
     int value;
