@@ -23,3 +23,9 @@ public class getMaxPieces {
         return res+1;
     }
 }
+/*
+Time complexity
+T(n) = T(n-a) + T(n-b) + T(n-c) + c1
+O(3^n)
+
+ */
