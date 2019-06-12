@@ -5,8 +5,12 @@
 4. findMinimum element
 5. findMaximum element
 6. findHeight
+7. LevelOrderTraversal
 */
 
+
+import java.util.LinkedList;
+import java.util.Queue;
 
 class Node{
     int data;
@@ -21,12 +25,16 @@ public class BinarySearchTree {
         root = insertNode(root,25);
         root = insertNode(root,30);
         root = insertNode(root,2);
+        root = insertNode(root,18);
+        root = insertNode(root,22);
         if (searchNode(root, 30)) {
             System.out.println("node is present in tree");
         }
         System.out.println("min element "+ findMin(root));
         System.out.println("max element "+findMax(root));
         System.out.println("Height: "+ findHeight(root));
+        System.out.println("Level order traversal of tree is: ");
+        levelOrder(root);
 
 
     }
@@ -88,8 +96,8 @@ public class BinarySearchTree {
 Height of tree = max depth
 Height of leaf node = 0
 
-Height of tree = 
-Height of root = 
+Height of tree =
+Height of root =
 No of edges in the longest path from root to leaf node
  */
 
@@ -100,5 +108,23 @@ No of edges in the longest path from root to leaf node
         int rightHeight = findHeight(root.right);
 
         return 1+Math.max(leftHeight,rightHeight);
+    }
+
+    //level order traversal..using queue
+    public static void levelOrder(Node root){
+        if(root==null)
+            return;
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()){
+            Node current = queue.peek();
+            System.out.print(current.data + " ");
+            if(current.left!=null)
+                queue.add(current.left);
+            if(current.right!=null)
+                queue.add(current.right);
+            queue.poll();
+        }
+        System.out.println();
     }
 }
