@@ -6,8 +6,11 @@
 5. findMaximum element
 6. findHeight
 7. LevelOrderTraversal
+8. Depth Order Traversal
+        preorder
+        inorder
+        postorder
 */
-
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -35,6 +38,16 @@ public class BinarySearchTree {
         System.out.println("Height: "+ findHeight(root));
         System.out.println("Level order traversal of tree is: ");
         levelOrder(root);
+        System.out.println("preorder traversal of tree is: ");
+        preOrder(root);
+        System.out.println();
+        System.out.println("inorder traversal of tree is: ");
+        inOrder(root);
+        System.out.println();
+        System.out.println("postOrder traversal of tree is: ");
+        postOrder(root);
+        System.out.println();
+
 
 
     }
@@ -111,6 +124,14 @@ No of edges in the longest path from root to leaf node
     }
 
     //level order traversal..using queue
+    /*
+    Time comp: O(n)
+    Space comp:
+    Best: O(1)..when skewed tree
+    Worst: Perfect bt..O(n)..actually n/2. As their are n/2 nodes at the deepest level
+    Avg: O(n)
+
+     */
     public static void levelOrder(Node root){
         if(root==null)
             return;
@@ -127,4 +148,37 @@ No of edges in the longest path from root to leaf node
         }
         System.out.println();
     }
+    /*
+    Space complexity
+    Call stack will grow only till we reach a leaf node..with no children
+    And then it starts shrinking again.
+    O(h)..h is height of tree
+
+    Time comp: O(n)
+
+     */
+    public static void preOrder(Node root){
+        if (root==null)
+            return;
+        System.out.print(root.data+" ");
+        preOrder(root.left);
+        preOrder(root.right);
+    }
+
+    public static void inOrder(Node root){
+        if(root==null)
+            return;
+        inOrder(root.left);
+        System.out.print(root.data+" ");
+        inOrder(root.right);
+    }
+
+    public static void postOrder(Node root){
+        if(root==null)
+            return;
+        postOrder(root.left);
+        postOrder(root.right);
+        System.out.print(root.data+" ");
+    }
 }
+
