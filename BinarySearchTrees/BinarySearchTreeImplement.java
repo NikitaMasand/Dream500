@@ -2,6 +2,8 @@
 1. getNewNode function
 2. InsertNode function
 3. searchNode given data function
+4. findMinimum element
+5. findMaximum element
 */
 
 
@@ -19,6 +21,8 @@ public class BinarySearchTree {
         root = insertNode(root,30);
         root = insertNode(root,2);
         System.out.println(searchNode(root,30));
+        System.out.println(findMin(root));
+        System.out.println(findMax(root));
 
     }
     public static Node getNewNode(int data){
@@ -52,4 +56,28 @@ public class BinarySearchTree {
         else
             return searchNode(root.right,data);
     }
+
+    public static int findMin(Node root){
+        if(root==null){
+            System.out.println("Error: Tree is empty");
+            return -1;
+        }
+        //not using current because root here is a local variable
+        //to function, modifying root here
+        //does not modify the root in main function
+        while (root.left!=null)
+            root = root.left;
+        return root.data;
+    }
+
+    public static int findMax(Node root){
+        if(root==null){
+            System.out.println("Error: Tree is empty");
+            return -1;
+        }
+        while (root.right!=null)
+            root = root.right;
+        return root.data;
+    }
 }
+
