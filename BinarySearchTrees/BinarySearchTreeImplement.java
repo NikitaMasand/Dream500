@@ -4,6 +4,7 @@
 3. searchNode given data function
 4. findMinimum element
 5. findMaximum element
+6. findHeight
 */
 
 
@@ -20,9 +21,13 @@ public class BinarySearchTree {
         root = insertNode(root,25);
         root = insertNode(root,30);
         root = insertNode(root,2);
-        System.out.println(searchNode(root,30));
-        System.out.println(findMin(root));
-        System.out.println(findMax(root));
+        if (searchNode(root, 30)) {
+            System.out.println("node is present in tree");
+        }
+        System.out.println("min element "+ findMin(root));
+        System.out.println("max element "+findMax(root));
+        System.out.println("Height: "+ findHeight(root));
+
 
     }
     public static Node getNewNode(int data){
@@ -79,5 +84,21 @@ public class BinarySearchTree {
             root = root.right;
         return root.data;
     }
-}
+/*
+Height of tree = max depth
+Height of leaf node = 0
 
+Height of tree = 
+Height of root = 
+No of edges in the longest path from root to leaf node
+ */
+
+    public static int findHeight(Node root){
+        if(root==null)
+            return -1;
+        int leftHeight = findHeight(root.left);
+        int rightHeight = findHeight(root.right);
+
+        return 1+Math.max(leftHeight,rightHeight);
+    }
+}
