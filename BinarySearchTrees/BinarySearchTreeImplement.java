@@ -125,12 +125,15 @@ No of edges in the longest path from root to leaf node
 
     //level order traversal..using queue
     /*
-    Time comp: O(n)
-    Space comp:
-    Best: O(1)..when skewed tree
-    Worst: Perfect bt..O(n)..actually n/2. As their are n/2 nodes at the deepest level
-    Avg: O(n)
-
+Time comp: O(n)
+Space comp:
+Best: O(1)..when skewed tree
+Worst: Perfect bt..O(n)..actually n/2. As their are n/2 nodes at the deepest level
+Avg: O(n)
+        
+Call stack will grow only till we reach a leaf node..with no children
+And then it starts shrinking again.
+O(h)..h is height of tree
      */
     public static void levelOrder(Node root){
         if(root==null)
@@ -149,12 +152,28 @@ No of edges in the longest path from root to leaf node
         System.out.println();
     }
     /*
-    Space complexity
-    Call stack will grow only till we reach a leaf node..with no children
-    And then it starts shrinking again.
-    O(h)..h is height of tree
 
-    Time comp: O(n)
+Time comp: O(n)
+T(n) = T(k) + T(n-k-1) + c..
+Where k is number of nodes on one side of root and n-k-1 on other side
+
+For a skewed binary tree..k = 0
+T(n) = T(0) + T(n-1) + c
+T(n) = 2T(0) + T(n-2) + 2c
+T(n) = 3T(0) + T(n-3) + 3c
+
+
+T(n) = nT(0) + nc
+…..= O(n) or theta(n)
+
+For both left and right subtrees have equal number of roots..
+
+T(n) = 2T(floor(n/2)) + c
+By masters theorem..O(n)
+
+Space complexity:
+If we don’t consider size of stack for function calls then O(1) otherwise O(n).
+
 
      */
     public static void preOrder(Node root){
