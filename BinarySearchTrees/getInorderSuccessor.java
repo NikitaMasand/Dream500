@@ -1,4 +1,6 @@
 /*
+
+time complexity: O(logn)
 find inorder successor for given node
 left root right
 case 1:
