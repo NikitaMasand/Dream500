@@ -56,6 +56,7 @@ public class MooresMajorityElement {
             }
             if(count==0){
                 cand = arr[i];
+                count=1;
             }
         }
         return cand;
