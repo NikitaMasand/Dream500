@@ -48,7 +48,7 @@ public class MooresMajorityElement {
         int count = 1;
         int cand = arr[0];
         for(int i=1;i<size;i++){
-            if(arr[i]==arr[i-1]){
+            if(arr[i]==arr[cand]){
                 count++;
             }
             else{
