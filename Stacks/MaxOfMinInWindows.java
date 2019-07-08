@@ -1,5 +1,18 @@
 package Stacks;
+/*
+Given an integer array A[] of size N. The task is to find the maximum of the minimum of every window size in the array.
 
+For every element we found the previous smaller and the next smaller element.
+So the length of window in which that element is smallest is found out by subtracting the indices i.e right[i]-left[i]-1.
+The left and right arr are found in 0(1) using stacks.
+And then the final ans arr is created where for every window length the element is added.
+If two or more elements have the same window length, the max of two is taken into consideration.
+There might be a case if from the above approach length of some windows are not found by observation,
+the ans elements are in non increasing order. And thus if ans element is 0, it is found as max[arr[i],arr[i+1].
+you will understand it if you try on book.
+
+
+*/
 import java.util.Stack;
 
 public class MaxOfMinInWindows {
