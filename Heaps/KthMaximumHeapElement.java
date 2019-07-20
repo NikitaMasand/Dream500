@@ -1,5 +1,8 @@
 package GFGContest;
-
+/*
+Given a max heap array mHeap of positive integers of size N and a positive integer k.
+The task is to find the kth maximum element of the heap.
+*/
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
