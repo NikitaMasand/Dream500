@@ -14,8 +14,8 @@ public class GreaterSumTree {
         if(node==null)
             return;
         greaterSumTree(node.right);
-        node.data=node.data+sum;
-        sum=node.data;
+        sum = sum + node.data;
+        node.data = sum - node.data;
         System.out.print(node.data+" ");
         greaterSumTree(node.left);
     }
