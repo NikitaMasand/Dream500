@@ -20,7 +20,7 @@ public class SpiralLevelOrderTraversal {
         Stack<Node> stack_1 = new Stack<>();
         Stack<Node> stack_2 = new Stack<>();
         stack_1.push(root);
-        while (!stack_1.isEmpty() || stack_2.isEmpty()) {
+        while (!stack_1.isEmpty() || !stack_2.isEmpty()) {
             while (!stack_1.isEmpty()) {
                 Node temp = stack_1.pop();
                 System.out.print(temp.data + " ");
