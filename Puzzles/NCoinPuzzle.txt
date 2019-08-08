@@ -1,0 +1,51 @@
+source:
+https://www.quora.com/Given-n-coins-for-two-players-playing-a-game-Each-player-can-pick-at-least-1-and-at-most-5-coins-in-one-turn-
+The-player-who-picks-the-last-coin-loses-the-game-If-they-play-optimally-which-player-will-win-the-game
+
+answer copied from the above source
+
+Given n coins for two players playing a game. Each player can pick at least 1 and at most 5 coins in one turn.
+The player who picks the last coin loses the game. If they play optimally, which player will win the game?
+
+First let me give one similar instance of the above problem:
+Problem : Initially the value of n is 0. Now the two players can alternatively
+add atleast 1 and atmost 10 to n so as to change the value of n. suppose I start the game
+and add k to n such that n becomes n+k∈[n+1,n+10]. Then the second player repeat the procedure and so on….
+The guy who is able to make n=100 wins the game.
+
+Strategy to win the game everytime( if you start):
+In order to call 100 you must be able to call 89 which in turn requires you to be able to call 78 and so on…
+So backtracking gives you a series of winning call as:
+
+1,12,23,34,45,56,67,78,89,100
+
+if you are able to call 1 then you will be able to call 100 and hence win the game.
+
+Try this with your friend. If he/she doesn’t know the logic
+then you could let him/her start the game and you could mess around with the series so as to distract him/her out of the logic,
+finally you need to call 89.
+
+Now coming to the asked problem:
+
+In order to win, you must be able to leave 1 coin at the table
+which in turn requires you to leave 7 coins at the table
+which in turn requires you to be able to leave 13 coins on the table and so on…
+
+similar backtracking will give you a series of winning moves as:
+
+1,7,13,19,25,31,37,43,………….6∗k+1
+
+k≥0,k∈N
+
+So if (Number of coins - 1) is a multiple of 6 ,
+the person who starts the game is looser because other guy by default is within the series.
+
+Otherwise the person who starts the game is winner.
+
+Consider one example.
+Let no.ofcoins=9 .
+9–1=8 is not a multiple of 6
+hence the person who starts the game wins the game because the starter can remove 1 coin to achieve 7 which is in the series.
+
+I am not sure, but atleast a, atmost b
+then (a+b)*k + 1 works
